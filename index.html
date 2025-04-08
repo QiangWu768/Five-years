@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我们的五周年纪念</title>
+    <title>我的小天地</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <link id="googleFonts" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
@@ -12,80 +12,29 @@
 <body>
     <div class="container">
         <header class="animate__animated animate__fadeIn">
-            <h1 id="site-title">五年之约</h1>
-            <p class="subtitle" id="site-subtitle">我们在一起的第五个年头</p>
+            <h1 id="site-title">我的小天地</h1>
         </header>
 
-        <section class="timeline animate__animated animate__fadeInUp">
-            <h2>我们的故事</h2>
-            <div class="timeline-container" id="timeline-container">
-                <!-- 时间线内容将通过JavaScript动态加载 -->
-            </div>
-        </section>
-
-        <section class="gallery animate__animated animate__fadeInUp">
-            <h2>美好瞬间</h2>
-            <div class="gallery-container" id="gallery">
-                <!-- 图片将通过JavaScript动态加载 -->
-            </div>
-        </section>
-
-        <section class="love-letter animate__animated animate__fadeInUp">
-            <h2>给你的一封信</h2>
-            <div class="letter-content" id="love-letter">
-                <!-- 信件内容将通过JavaScript动态加载 -->
-            </div>
-        </section>
-
-        <section class="counter animate__animated animate__fadeInUp">
-            <h2>我们在一起</h2>
-            <div class="counter-container">
-                <div class="counter-item">
-                    <span id="years">0</span>
-                    <p>年</p>
-                </div>
-                <div class="counter-item">
-                    <span id="months">0</span>
-                    <p>月</p>
-                </div>
-                <div class="counter-item">
-                    <span id="days">0</span>
-                    <p>日</p>
-                </div>
-                <div class="counter-item">
-                    <span id="hours">0</span>
-                    <p>小时</p>
-                </div>
-                <div class="counter-item">
-                    <span id="minutes">0</span>
-                    <p>分钟</p>
-                </div>
-                <div class="counter-item">
-                    <span id="seconds">0</span>
-                    <p>秒</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="music animate__animated animate__fadeInUp">
-            <h2>我们的歌</h2>
-            <div class="music-player">
-                <audio id="bgMusic" controls loop>
-                    <source src="" type="audio/mpeg">
-                    您的浏览器不支持音频播放
-                </audio>
+        <section class="menu animate__animated animate__fadeInUp">
+            <div class="menu-container">
+                <a href="kids.html" class="menu-item">
+                    <div class="menu-icon">🐾</div>
+                    <h2>Kids</h2>
+                    <p>我养的小宠物们</p>
+                </a>
+                <a href="poems.html" class="menu-item">
+                    <div class="menu-icon">📝</div>
+                    <h2>Poems</h2>
+                    <p>我翻译的诗</p>
+                </a>
             </div>
         </section>
 
         <footer class="animate__animated animate__fadeIn">
-            <p>© <span id="current-year">2023</span> 我们的五周年 - 用❤️制作</p>
-            <p class="footer-message">愿我们的爱，如酒般历久弥香</p>
+            <p>© <span id="current-year">2023</span> 我的小天地</p>
         </footer>
     </div>
 
-    <div class="floating-heart" id="floating-heart">❤️</div>
-
-    <script src="config.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html> 

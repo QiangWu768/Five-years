@@ -1,9 +1,9 @@
 /* CSS变量设置 */
 :root {
-    --main-color: #81D8D0;
-    --secondary-color: #5fb0a8;
-    --gradient-start: #e6f9f7;
-    --gradient-end: #f0f8ff;
+    --main-color: #24252A; /* Anthropic深灰色 */
+    --secondary-color: #3E3F46; /* 次要颜色 */
+    --gradient-start: #F5F5F5; /* 浅灰色渐变起点 */
+    --gradient-end: #FFFFFF; /* 白色渐变终点 */
 }
 
 /* 基本样式设置 */

@@ -2,8 +2,8 @@
 :root {
     --main-color: #24252A; /* Anthropic深灰色 */
     --secondary-color: #3E3F46; /* 次要颜色 */
-    --gradient-start: #F5F5F5; /* 浅灰色渐变起点 */
-    --gradient-end: #FFFFFF; /* 白色渐变终点 */
+    --gradient-start: #F9F5EB; /* 偏黄色调起点 */
+    --gradient-end: #F1EBD9; /* 偏黄色调终点 */
 }
 
 /* 基本样式设置 */
@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Noto Serif SC', serif;
+    font-family: 'Times New Roman', Times, serif;
     background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
     color: #333;
     line-height: 1.6;
@@ -28,7 +28,7 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Ma Shan Zheng', cursive;
+    font-family: 'Times New Roman', Times, serif;
     color: var(--main-color);
 }
 

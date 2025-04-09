@@ -7,11 +7,27 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
+    <style>
+        .timer {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #666;
+        }
+        .timer span {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header class="animate__animated animate__fadeIn">
             <h1 id="site-title">Five Year Anniversary</h1>
+            <div class="timer animate__animated animate__fadeIn">
+                <p>我们已经在一起</p>
+                <p><span id="days">0</span> 天 <span id="hours">0</span> 小时 <span id="minutes">0</span> 分钟 <span id="seconds">0</span> 秒</p>
+            </div>
         </header>
 
         <section class="menu animate__animated animate__fadeInUp">
@@ -34,6 +50,31 @@
         </footer>
     </div>
 
-    <script src="js/script.js"></script>
+    <script>
+        // 更新当前年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 计算时间差的函数
+        function updateTimer() {
+            const startDate = new Date('2020-04-13T00:00:00');
+            const now = new Date();
+            const diff = now - startDate;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        // 初始更新
+        updateTimer();
+        // 每秒更新一次
+        setInterval(updateTimer, 1000);
+    </script>
 </body>
 </html> 

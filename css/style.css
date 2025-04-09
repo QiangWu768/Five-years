@@ -538,16 +538,18 @@ footer {
 }
 
 .poem h3 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
+    font-family: "黑体", "SimHei", "Microsoft YaHei", sans-serif;
+    margin-bottom: 20px;
+    color: var(--main-color);
     text-align: center;
+    font-size: 1.8rem;
 }
 
 .poem .original {
-    font-style: italic;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
+    font-family: "楷体", "KaiTi", "宋体", "SimSun", serif;
+    line-height: 1.8;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
 }
 
 .poem .translation {
@@ -599,6 +601,7 @@ footer {
 }
 
 .en-name {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 1.5rem;
     color: #666;
     margin-left: 10px;
@@ -623,7 +626,7 @@ footer {
     box-shadow: a 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     display: block;
-    text-decoration: none;
+    text-align: left;
 }
 
 .poem-link:hover {
@@ -644,4 +647,29 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* 为诗歌添加更优雅的中文字体 */
+.poem .original {
+    font-family: "楷体", "KaiTi", "宋体", "SimSun", serif;
+    line-height: 1.8;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.poem h3 {
+    font-family: "黑体", "SimHei", "Microsoft YaHei", sans-serif;
+    margin-bottom: 20px;
+    color: var(--main-color);
+    text-align: center;
+    font-size: 1.8rem;
+}
+
+/* 诗人名称更清晰的样式 */
+#site-title {
+    font-family: "黑体", "SimHei", "Microsoft YaHei", sans-serif;
+}
+
+.en-name {
+    font-family: 'Times New Roman', Times, serif;
 } 

@@ -18,6 +18,11 @@
             font-weight: bold;
             color: #ff6b6b;
         }
+        .timer .time-unit {
+            display: inline-block;
+            margin: 0 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -25,8 +30,24 @@
         <header class="animate__animated animate__fadeIn">
             <h1 id="site-title">Five Year Anniversary</h1>
             <div class="timer animate__animated animate__fadeIn">
-                <p>我们已经在一起</p>
-                <p><span id="days">0</span> 天 <span id="hours">0</span> 小时 <span id="minutes">0</span> 分钟 <span id="seconds">0</span> 秒</p>
+                <p>Time We've Been Together</p>
+                <div>
+                    <div class="time-unit">
+                        <span id="years">0</span> Years
+                    </div>
+                    <div class="time-unit">
+                        <span id="days">0</span> Days
+                    </div>
+                    <div class="time-unit">
+                        <span id="hours">0</span> Hours
+                    </div>
+                    <div class="time-unit">
+                        <span id="minutes">0</span> Minutes
+                    </div>
+                    <div class="time-unit">
+                        <span id="seconds">0</span> Seconds
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -35,12 +56,12 @@
                 <a href="kids.html" class="menu-item">
                     <div class="menu-icon">🐾</div>
                     <h2>Our Kids</h2>
-                    <p>我们的小宝贝们</p>
+                    <p>Our Little Ones</p>
                 </a>
                 <a href="poems-index.html" class="menu-item">
                     <div class="menu-icon">📝</div>
                     <h2>Poetry Translations</h2>
-                    <p>Our Poetry Translations</p>
+                    <p>Our Poetry Collection</p>
                 </a>
             </div>
         </section>
@@ -60,11 +81,13 @@
             const now = new Date();
             const diff = now - startDate;
 
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
+            document.getElementById('years').textContent = years;
             document.getElementById('days').textContent = days;
             document.getElementById('hours').textContent = hours;
             document.getElementById('minutes').textContent = minutes;

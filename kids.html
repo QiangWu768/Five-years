@@ -7,6 +7,38 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    <style>
+        .pets-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .pet-card {
+            text-align: center;
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .pet-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        /* 小狗卡片的特殊样式 */
+        .pet-card.featured {
+            grid-column: 2;
+            grid-row: 2;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -17,46 +49,32 @@
         <section class="pets animate__animated animate__fadeInUp">
             <div class="pets-container">
                 <div class="pet-card">
-                    <img src="images/小白.jpg" alt="小白" class="pet-image">
-                    <div class="pet-info">
-                        <h3>小白</h3>
-                    </div>
+                    <img src="images/小白.jpg" alt="小白">
+                    <h3>小白</h3>
                 </div>
                 <div class="pet-card">
-                    <img src="images/小猫.jpg" alt="小猫" class="pet-image">
-                    <div class="pet-info">
-                        <h3>小猫</h3>
-                    </div>
+                    <img src="images/小猫.jpg" alt="小猫">
+                    <h3>小猫</h3>
                 </div>
                 <div class="pet-card">
-                    <img src="images/小灰.jpg" alt="小灰" class="pet-image">
-                    <div class="pet-info">
-                        <h3>小灰</h3>
-                    </div>
+                    <img src="images/小灰.jpg" alt="小灰">
+                    <h3>小灰</h3>
                 </div>
                 <div class="pet-card">
-                    <img src="images/小狗.jpg" alt="小狗" class="pet-image">
-                    <div class="pet-info">
-                        <h3>小狗</h3>
-                    </div>
+                    <img src="images/小黑.jpg" alt="小黑">
+                    <h3>小黑</h3>
+                </div>
+                <div class="pet-card featured">
+                    <img src="images/小狗.jpg" alt="小狗">
+                    <h3>小狗</h3>
                 </div>
                 <div class="pet-card">
-                    <img src="images/小黑.jpg" alt="小黑" class="pet-image">
-                    <div class="pet-info">
-                        <h3>小黑</h3>
-                    </div>
+                    <img src="images/成龙.jpg" alt="成龙">
+                    <h3>成龙</h3>
                 </div>
                 <div class="pet-card">
-                    <img src="images/成龙.jpg" alt="成龙" class="pet-image">
-                    <div class="pet-info">
-                        <h3>成龙</h3>
-                    </div>
-                </div>
-                <div class="pet-card">
-                    <img src="images/疯狗.jpg" alt="疯狗" class="pet-image">
-                    <div class="pet-info">
-                        <h3>疯狗</h3>
-                    </div>
+                    <img src="images/疯狗.jpg" alt="疯狗">
+                    <h3>疯狗</h3>
                 </div>
             </div>
         </section>

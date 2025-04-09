@@ -11,32 +11,64 @@
         .pets-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, auto);
             gap: 20px;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            place-items: center;
         }
         
         .pet-card {
+            width: 100%;
+            max-width: 300px;
             text-align: center;
             background: #fff;
             border-radius: 10px;
-            padding: 15px;
+            padding: 10px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
         }
         
         .pet-card img {
             width: 100%;
-            height: auto;
+            height: 200px; /* 固定高度 */
+            object-fit: cover; /* 保持图片比例 */
             border-radius: 8px;
+            margin-bottom: 10px;
         }
         
-        /* 小狗卡片的特殊样式 */
+        .pet-card h3 {
+            margin: 5px 0;
+            font-size: 1.2em;
+        }
+        
+        /* 中心宠物卡片样式 */
         .pet-card.featured {
             grid-column: 2;
             grid-row: 2;
             transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        
+        /* 环绕布局 */
+        .pet-card:nth-child(1) { grid-area: 1 / 1; }
+        .pet-card:nth-child(2) { grid-area: 1 / 2; }
+        .pet-card:nth-child(3) { grid-area: 1 / 3; }
+        .pet-card:nth-child(4) { grid-area: 2 / 1; }
+        .pet-card.featured { grid-area: 2 / 2; }
+        .pet-card:nth-child(5) { grid-area: 2 / 3; }
+        .pet-card:nth-child(6) { grid-area: 3 / 1; }
+        .pet-card:nth-child(7) { grid-area: 3 / 3; }
+
+        /* 悬停效果 */
+        .pet-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .pet-card.featured:hover {
+            transform: scale(1.15);
         }
     </style>
 </head>
@@ -79,7 +111,7 @@
             </div>
         </section>
 
-        <a href="index.html" class="back-link">返回首页</a>
+        <a href="index.html" class="back-link">Back to Home</a>
 
         <footer class="animate__animated animate__fadeIn">
             <p>© <span id="current-year">2023</span> Five Year Anniversary</p>

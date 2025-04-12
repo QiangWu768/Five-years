@@ -70,6 +70,47 @@
             transform: scale(1.1);
             z-index: 10;
         }
+
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: inherit;
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .menu-icon {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .menu-card h2 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+
+        .menu-card p {
+            color: #666;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -129,15 +170,20 @@
 
         <section class="menu animate__animated animate__fadeInUp">
             <div class="menu-container">
-                <a href="kids.html" class="menu-item">
-                    <div class="menu-icon">🐾</div>
+                <a href="story.html" class="menu-card animate__animated animate__fadeIn">
+                    <img src="images/timeline-icon.png" alt="时光轴图标" class="menu-icon">
+                    <h2>Our Story</h2>
+                    <p>Time Capsule</p>
+                </a>
+                <a href="kids.html" class="menu-card animate__animated animate__fadeIn">
+                    <img src="images/paw-icon.png" alt="爪印图标" class="menu-icon">
                     <h2>Our Kids</h2>
                     <p>Our Little Ones</p>
                 </a>
-                <a href="poems-index.html" class="menu-item">
-                    <div class="menu-icon">📝</div>
-                    <h2>Poetry Translations</h2>
-                    <p>Our Poetry Collection</p>
+                <a href="poetry.html" class="menu-card animate__animated animate__fadeIn">
+                    <img src="images/poetry-icon.png" alt="诗歌图标" class="menu-icon">
+                    <h2>Poetry</h2>
+                    <p>Translations</p>
                 </a>
             </div>
         </section>

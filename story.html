@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Five Year Anniversary</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
+    <style>
+        .timeline-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .timeline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .memory-card {
+            position: relative;
+            width: 300px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.02);
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .year-label {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.9);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* 弹窗样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+        .close-button {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background: white;
+            border-radius: 20px;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="animate__animated animate__fadeIn">
+            <h1>Our Story</h1>
+        </header>
+
+        <div class="timeline-container animate__animated animate__fadeInUp">
+            <div class="timeline">
+                <div class="memory-card" onclick="showImage('images/2020.png')">
+                    <img src="images/2020.png" alt="2020年的记忆">
+                    <div class="year-label">2020</div>
+                </div>
+                <div class="memory-card" onclick="showImage('images/2021_1.png')">
+                    <img src="images/2021_1.png" alt="2021年的记忆1">
+                    <div class="year-label">2021</div>
+                </div>
+                <div class="memory-card" onclick="showImage('images/2021.png')">
+                    <img src="images/2021.png" alt="2021年的记忆2">
+                    <div class="year-label">2021</div>
+                </div>
+                <div class="memory-card" onclick="showImage('images/2022.png')">
+                    <img src="images/2022.png" alt="2022年的记忆">
+                    <div class="year-label">2022</div>
+                </div>
+                <div class="memory-card" onclick="showImage('images/2023.png')">
+                    <img src="images/2023.png" alt="2023年的记忆">
+                    <div class="year-label">2023</div>
+                </div>
+                <div class="memory-card" onclick="showImage('images/2024.png')">
+                    <img src="images/2024.png" alt="2024年的记忆">
+                    <div class="year-label">2024</div>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">Back to Home</a>
+
+        <!-- 图片查看弹窗 -->
+        <div id="imageModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeModal()">&times;</span>
+                <img id="modalImage" src="" alt="放大查看">
+            </div>
+        </div>
+
+        <footer class="animate__animated animate__fadeIn">
+            <p>© <span id="current-year">2024</span> Five Year Anniversary</p>
+        </footer>
+    </div>
+
+    <script>
+        // 更新年份
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // 显示图片
+        function showImage(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'flex';
+            modalImg.src = src;
+            document.body.style.overflow = 'hidden';
+        }
+
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // 点击弹窗外部关闭
+        document.getElementById('imageModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ESC键关闭弹窗
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html> 

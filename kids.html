@@ -10,110 +10,129 @@
     <style>
         .pets-container {
             position: relative;
-            width: 800px;
-            height: 800px;
-            margin: 0 auto;
+            width: 100%;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 40px;
         }
         
         .pet-card {
             position: absolute;
-            width: 250px;
-            background: #fff;
+            width: 200px;
+            height: 200px;
+            background: white;
             border-radius: 15px;
-            padding: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .pet-card img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
+            border-radius: 15px;
         }
         
-        .pet-card h3 {
-            text-align: center;
-            margin: 5px 0;
-            font-size: 1.2em;
-        }
-        
-        /* 中心宠物卡片 */
-        .pet-card.featured {
+        .pet-card .pet-name {
             position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-size: 16px;
+        }
+        
+        /* 中心的小狗 */
+        .pet-card:nth-child(1) {
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(1.2);
+            transform: translate(-50%, -50%);
+            width: 250px;
+            height: 250px;
+            z-index: 5;
+        }
+        
+        /* 疯狗 - 左上 */
+        .pet-card:nth-child(2) {
+            top: 20%;
+            left: 20%;
+        }
+        
+        /* 成龙 - 左下 */
+        .pet-card:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+        }
+        
+        /* 小灰 - 右上 */
+        .pet-card:nth-child(4) {
+            top: 20%;
+            right: 20%;
+        }
+        
+        /* 小黑 - 右下 */
+        .pet-card:nth-child(5) {
+            bottom: 20%;
+            right: 20%;
+        }
+        
+        .pet-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             z-index: 10;
         }
         
-        /* 环绕布局 - 顺时针排列 */
-        .pet-card:nth-child(1) { /* 小白 */
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
+        /* 中心小狗的hover效果特殊处理 */
+        .pet-card:nth-child(1):hover {
+            transform: translate(-50%, -50%) scale(1.05);
         }
         
-        .pet-card:nth-child(2) { /* 小猫 */
-            top: 25%;
-            right: 10%;
-        }
-        
-        .pet-card:nth-child(3) { /* 小灰 */
-            bottom: 25%;
-            right: 10%;
-        }
-        
-        .pet-card:nth-child(4) { /* 小黑 */
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .pet-card:nth-child(6) { /* 成龙 */
-            bottom: 25%;
-            left: 10%;
-        }
-        
-        .pet-card:nth-child(7) { /* 疯狗 */
-            top: 25%;
-            left: 10%;
-        }
-
-        /* 悬停效果 */
-        .pet-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .pet-card.featured:hover {
-            transform: translate(-50%, -50%) scale(1.25);
-        }
-
         /* 响应式调整 */
-        @media (max-width: 900px) {
+        @media (max-width: 1200px) {
+            .pet-card {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .pet-card:nth-child(1) {
+                width: 220px;
+                height: 220px;
+            }
+        }
+        
+        @media (max-width: 768px) {
             .pets-container {
-                width: 100%;
                 height: auto;
+                flex-direction: column;
                 padding: 20px;
             }
             
             .pet-card {
                 position: relative;
-                width: 100%;
-                max-width: 300px;
-                margin: 10px auto;
-            }
-            
-            .pet-card.featured {
-                position: relative;
-                transform: none;
+                margin: 20px auto;
+                width: 160px;
+                height: 160px;
                 top: auto;
                 left: auto;
+                right: auto;
+                bottom: auto;
+                transform: none;
+            }
+            
+            .pet-card:nth-child(1) {
+                width: 200px;
+                height: 200px;
+                transform: none;
+            }
+            
+            .pet-card:hover {
+                transform: scale(1.05);
             }
         }
 
@@ -187,32 +206,24 @@
         <section class="pets animate__animated animate__fadeInUp">
             <div class="pets-container">
                 <div class="pet-card">
-                    <img src="images/小白.jpg" alt="小白">
-                    <h3>小白</h3>
+                    <img src="images/puppy.jpg" alt="小狗">
+                    <div class="pet-name">小狗</div>
                 </div>
                 <div class="pet-card">
-                    <img src="images/小猫.jpg" alt="小猫">
-                    <h3>小猫</h3>
+                    <img src="images/fengdog.jpg" alt="疯狗">
+                    <div class="pet-name">疯狗</div>
                 </div>
                 <div class="pet-card">
-                    <img src="images/小灰.jpg" alt="小灰">
-                    <h3>小灰</h3>
+                    <img src="images/chenglong.jpg" alt="成龙">
+                    <div class="pet-name">成龙</div>
                 </div>
                 <div class="pet-card">
-                    <img src="images/小黑.jpg" alt="小黑">
-                    <h3>小黑</h3>
-                </div>
-                <div class="pet-card featured">
-                    <img src="images/小狗.jpg" alt="小狗">
-                    <h3>小狗</h3>
+                    <img src="images/xiaohui.jpg" alt="小灰">
+                    <div class="pet-name">小灰</div>
                 </div>
                 <div class="pet-card">
-                    <img src="images/成龙.jpg" alt="成龙">
-                    <h3>成龙</h3>
-                </div>
-                <div class="pet-card">
-                    <img src="images/疯狗.jpg" alt="疯狗">
-                    <h3>疯狗</h3>
+                    <img src="images/xiaohei.jpg" alt="小黑">
+                    <div class="pet-name">小黑</div>
                 </div>
             </div>
         </section>
@@ -375,7 +386,7 @@
         }
 
         // 为疯狗的卡片添加点击事件
-        document.querySelector('.pet-card:nth-child(7)').addEventListener('click', showMemory);
+        document.querySelector('.pet-card:nth-child(2)').addEventListener('click', showMemory);
 
         // 点击弹窗外部关闭弹窗
         document.getElementById('memoryModal').addEventListener('click', function(e) {
@@ -404,7 +415,7 @@
         }
 
         // 为成龙的卡片添加点击事件
-        document.querySelector('.pet-card:nth-child(6)').addEventListener('click', showChengLongMemory);
+        document.querySelector('.pet-card:nth-child(3)').addEventListener('click', showChengLongMemory);
 
         // 点击成龙弹窗外部关闭弹窗
         document.getElementById('chengLongMemoryModal').addEventListener('click', function(e) {
@@ -426,7 +437,7 @@
         }
 
         // 为小猫的卡片添加点击事件
-        document.querySelector('.pet-card:nth-child(2)').addEventListener('click', showXiaoMaoMemory);
+        document.querySelector('.pet-card:nth-child(4)').addEventListener('click', showXiaoMaoMemory);
 
         // 点击小猫弹窗外部关闭弹窗
         document.getElementById('xiaoMaoMemoryModal').addEventListener('click', function(e) {
@@ -448,7 +459,7 @@
         }
 
         // 为小丸子的卡片添加点击事件
-        document.querySelector('.pet-card:nth-child(3)').addEventListener('click', showXiaoWanziMemory);
+        document.querySelector('.pet-card:nth-child(5)').addEventListener('click', showXiaoWanziMemory);
 
         // 点击小丸子弹窗外部关闭弹窗
         document.getElementById('xiaoWanziMemoryModal').addEventListener('click', function(e) {

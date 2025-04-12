@@ -23,6 +23,53 @@
             margin: 0 10px;
             text-align: center;
         }
+        .floating-photos {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .photo-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-photo {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .year-label {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #333;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .floating-photo:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -50,6 +97,35 @@
                 </div>
             </div>
         </header>
+
+        <section class="floating-photos animate__animated animate__fadeIn">
+            <div class="photo-container">
+                <div class="floating-photo" data-year="2020">
+                    <img src="images/2020.png" alt="2020年的照片">
+                    <span class="year-label">2020</span>
+                </div>
+                <div class="floating-photo" data-year="2021">
+                    <img src="images/2021_1.png" alt="2021年的照片1">
+                    <span class="year-label">2021</span>
+                </div>
+                <div class="floating-photo" data-year="2021">
+                    <img src="images/2021.png" alt="2021年的照片2">
+                    <span class="year-label">2021</span>
+                </div>
+                <div class="floating-photo" data-year="2022">
+                    <img src="images/2022.png" alt="2022年的照片">
+                    <span class="year-label">2022</span>
+                </div>
+                <div class="floating-photo" data-year="2023">
+                    <img src="images/2023.png" alt="2023年的照片">
+                    <span class="year-label">2023</span>
+                </div>
+                <div class="floating-photo" data-year="2024">
+                    <img src="images/2024.png" alt="2024年的照片">
+                    <span class="year-label">2024</span>
+                </div>
+            </div>
+        </section>
 
         <section class="menu animate__animated animate__fadeInUp">
             <div class="menu-container">
@@ -98,6 +174,51 @@
         updateTimer();
         // 每秒更新一次
         setInterval(updateTimer, 1000);
+
+        function initFloatingPhotos() {
+            const container = document.querySelector('.photo-container');
+            const photos = document.querySelectorAll('.floating-photo');
+            
+            function randomPosition(photo) {
+                const containerRect = container.getBoundingClientRect();
+                const photoRect = photo.getBoundingClientRect();
+                
+                const maxX = containerRect.width - photoRect.width;
+                const maxY = containerRect.height - photoRect.height;
+                
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+                
+                return { x: randomX, y: randomY };
+            }
+            
+            function movePhoto(photo) {
+                const position = randomPosition(photo);
+                const duration = 10000 + Math.random() * 5000; // 10-15秒
+                
+                photo.style.transition = `transform 0.3s ease, left ${duration}ms ease-in-out, top ${duration}ms ease-in-out`;
+                photo.style.left = `${position.x}px`;
+                photo.style.top = `${position.y}px`;
+                
+                setTimeout(() => movePhoto(photo), duration);
+            }
+            
+            // 初始化每张照片的位置
+            photos.forEach(photo => {
+                const position = randomPosition(photo);
+                photo.style.left = `${position.x}px`;
+                photo.style.top = `${position.y}px`;
+                
+                // 开始移动
+                setTimeout(() => movePhoto(photo), Math.random() * 3000);
+            });
+        }
+
+        // 页面加载完成后初始化
+        window.addEventListener('load', initFloatingPhotos);
+
+        // 窗口大小改变时重新初始化
+        window.addEventListener('resize', initFloatingPhotos);
     </script>
 </body>
 </html> 

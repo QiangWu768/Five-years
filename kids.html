@@ -17,7 +17,7 @@
             grid-template-areas: 
                 "a b c"
                 "d center e"
-                "f g h";
+                "f below g";
             gap: 30px;
             position: relative;
         }
@@ -75,12 +75,17 @@
             transform: scale(1.1);
         }
 
+        .pet-card.below-center {
+            grid-area: below;
+        }
+
         /* 响应式调整 */
         @media (max-width: 900px) {
             .pets-container {
                 grid-template-areas: 
                     "a b"
                     "center center"
+                    "below below"
                     "c d"
                     "e f"
                     "g h";
@@ -92,6 +97,7 @@
             .pets-container {
                 grid-template-areas: 
                     "center"
+                    "below"
                     "a"
                     "b"
                     "c"
@@ -211,7 +217,7 @@
                     <img src="images/小狗.jpg" alt="小狗">
                     <h3>小狗</h3>
                 </div>
-                <div class="pet-card">
+                <div class="pet-card below-center">
                     <img src="images/疯狗.jpg" alt="疯狗">
                     <h3>疯狗</h3>
                 </div>

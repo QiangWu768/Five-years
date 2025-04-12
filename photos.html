@@ -3,26 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Five Year Anniversary</title>
+    <title>Our Photos - Five Year Anniversary</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❤️</text></svg>">
     <style>
-        .timer {
-            text-align: center;
-            margin: 20px 0;
-            font-size: 1.2em;
-            color: #666;
-        }
-        .timer span {
-            font-weight: bold;
-            color: #ff6b6b;
-        }
-        .timer .time-unit {
-            display: inline-block;
-            margin: 0 10px;
-            text-align: center;
-        }
         .floating-photos {
             position: relative;
             width: 100%;
@@ -70,51 +55,56 @@
             transform: scale(1.1);
             z-index: 10;
         }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #ff5252;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="index.html" class="back-button">← Back to Home</a>
         <header class="animate__animated animate__fadeIn">
-            <h1 id="site-title">Five Year Anniversary</h1>
-            <div class="timer animate__animated animate__fadeIn">
-                <p>Time We've Been Together</p>
-                <div>
-                    <div class="time-unit">
-                        <span id="years">0</span> Years
-                    </div>
-                    <div class="time-unit">
-                        <span id="days">0</span> Days
-                    </div>
-                    <div class="time-unit">
-                        <span id="hours">0</span> Hours
-                    </div>
-                    <div class="time-unit">
-                        <span id="minutes">0</span> Minutes
-                    </div>
-                    <div class="time-unit">
-                        <span id="seconds">0</span> Seconds
-                    </div>
-                </div>
-            </div>
+            <h1>Our Photo Collection</h1>
         </header>
 
-        <section class="menu animate__animated animate__fadeInUp">
-            <div class="menu-container">
-                <a href="kids.html" class="menu-item">
-                    <div class="menu-icon">🐾</div>
-                    <h2>Our Kids</h2>
-                    <p>Our Little Ones</p>
-                </a>
-                <a href="poems-index.html" class="menu-item">
-                    <div class="menu-icon">📝</div>
-                    <h2>Poetry Translations</h2>
-                    <p>Our Poetry Collection</p>
-                </a>
-                <a href="photos.html" class="menu-item">
-                    <div class="menu-icon">📸</div>
-                    <h2>Our Photos</h2>
-                    <p>Memory Collection</p>
-                </a>
+        <section class="floating-photos animate__animated animate__fadeIn">
+            <div class="photo-container">
+                <div class="floating-photo" data-year="2020">
+                    <img src="images/2020.png" alt="2020年的照片">
+                    <span class="year-label">2020</span>
+                </div>
+                <div class="floating-photo" data-year="2021">
+                    <img src="images/2021_1.png" alt="2021年的照片1">
+                    <span class="year-label">2021</span>
+                </div>
+                <div class="floating-photo" data-year="2021">
+                    <img src="images/2021.png" alt="2021年的照片2">
+                    <span class="year-label">2021</span>
+                </div>
+                <div class="floating-photo" data-year="2022">
+                    <img src="images/2022.png" alt="2022年的照片">
+                    <span class="year-label">2022</span>
+                </div>
+                <div class="floating-photo" data-year="2023">
+                    <img src="images/2023.png" alt="2023年的照片">
+                    <span class="year-label">2023</span>
+                </div>
+                <div class="floating-photo" data-year="2024">
+                    <img src="images/2024.png" alt="2024年的照片">
+                    <span class="year-label">2024</span>
+                </div>
             </div>
         </section>
 
@@ -124,32 +114,7 @@
     </div>
 
     <script>
-        // 更新当前年份
         document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // 计算时间差的函数
-        function updateTimer() {
-            const startDate = new Date('2020-04-13T00:00:00');
-            const now = new Date();
-            const diff = now - startDate;
-
-            const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-            const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('years').textContent = years;
-            document.getElementById('days').textContent = days;
-            document.getElementById('hours').textContent = hours;
-            document.getElementById('minutes').textContent = minutes;
-            document.getElementById('seconds').textContent = seconds;
-        }
-
-        // 初始更新
-        updateTimer();
-        // 每秒更新一次
-        setInterval(updateTimer, 1000);
 
         function initFloatingPhotos() {
             const container = document.querySelector('.photo-container');
@@ -170,7 +135,7 @@
             
             function movePhoto(photo) {
                 const position = randomPosition(photo);
-                const duration = 10000 + Math.random() * 5000; // 10-15秒
+                const duration = 10000 + Math.random() * 5000;
                 
                 photo.style.transition = `transform 0.3s ease, left ${duration}ms ease-in-out, top ${duration}ms ease-in-out`;
                 photo.style.left = `${position.x}px`;
@@ -179,22 +144,17 @@
                 setTimeout(() => movePhoto(photo), duration);
             }
             
-            // 初始化每张照片的位置
             photos.forEach(photo => {
                 const position = randomPosition(photo);
                 photo.style.left = `${position.x}px`;
                 photo.style.top = `${position.y}px`;
                 
-                // 开始移动
                 setTimeout(() => movePhoto(photo), Math.random() * 3000);
             });
         }
 
-        // 页面加载完成后初始化
         window.addEventListener('load', initFloatingPhotos);
-
-        // 窗口大小改变时重新初始化
         window.addEventListener('resize', initFloatingPhotos);
     </script>
 </body>
-</html> 
+</html>

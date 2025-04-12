@@ -14,7 +14,10 @@
             margin: 0 auto;
             padding: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-areas: 
+                "a b c"
+                "d center e"
+                "f g h";
             gap: 30px;
             position: relative;
         }
@@ -68,26 +71,34 @@
         }
 
         .pet-card.featured {
-            position: relative;
-            transform: none;
-            grid-column: span 1;
-        }
-
-        .pet-card.featured:hover {
-            transform: translateY(-5px);
+            grid-area: center;
+            transform: scale(1.1);
         }
 
         /* 响应式调整 */
         @media (max-width: 900px) {
             .pets-container {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 20px;
-                padding: 10px;
+                grid-template-areas: 
+                    "a b"
+                    "center center"
+                    "c d"
+                    "e f"
+                    "g h";
+                grid-template-columns: 1fr 1fr;
             }
         }
 
         @media (max-width: 600px) {
             .pets-container {
+                grid-template-areas: 
+                    "center"
+                    "a"
+                    "b"
+                    "c"
+                    "d"
+                    "e"
+                    "f"
+                    "g";
                 grid-template-columns: 1fr;
             }
         }

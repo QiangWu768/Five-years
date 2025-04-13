@@ -75,7 +75,7 @@
             background-color: #444;
         }
 
-        /* 添加全屏查看样式 */
+        /* 修改全屏查看样式 */
         .fullscreen-modal {
             display: none;
             position: fixed;
@@ -83,43 +83,96 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.7);
             z-index: 1000;
             justify-content: center;
             align-items: center;
         }
 
         .fullscreen-content {
-            display: flex;
-            gap: 40px;
-            max-width: 90%;
-            max-height: 90vh;
-            align-items: center;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            font-family: "Times New Roman", serif;
+            line-height: 1.8;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .fullscreen-image {
-            max-width: 60%;
-            max-height: 90vh;
+            width: 100%;
+            height: auto;
             object-fit: contain;
             border-radius: 10px;
+            margin-bottom: 20px;
         }
 
         .image-description {
-            color: white;
-            max-width: 400px;
+            color: #333;
             font-size: 1.1em;
-            line-height: 1.8;
+            line-height: 2;
+            text-align: justify;
+            margin-top: 20px;
             white-space: pre-line;
             display: none;
         }
 
-        .close-fullscreen {
+        .close-button {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 30px;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
             cursor: pointer;
+            color: #666;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .floating-photos {
+                height: 600px;
+            }
+
+            .floating-photo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .fullscreen-content {
+                padding: 20px;
+                margin: 20px;
+            }
+
+            .fullscreen-image {
+                max-height: 50vh;
+            }
+
+            .image-description {
+                font-size: 1em;
+                line-height: 1.8;
+            }
+        }
+
+        /* 添加日期样式 */
+        .date {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .text {
+            margin-bottom: 25px;
+            color: #333;
+            text-align: justify;
+            line-height: 2;
+        }
+
+        .memory-divider {
+            border-bottom: 1px solid #eee;
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -172,21 +225,22 @@
         </footer>
     </div>
 
-    <!-- 添加全屏查看模态框 -->
+    <!-- 修改全屏查看模态框 -->
     <div class="fullscreen-modal" id="fullscreenModal">
-        <span class="close-fullscreen">&times;</span>
         <div class="fullscreen-content">
+            <span class="close-button">&times;</span>
             <img class="fullscreen-image" id="fullscreenImage">
             <div class="image-description" id="imageDescription">
-今年是第五年，我们获得了一个新身份
+                <p class="date">2025-4-13</p>
+                <p class="text">今年是第五年，我们获得了一个新身份
 今年我去了爷爷家，二叔家，姑姑家
 今年唯一的困难与不快，来自我的家人
 两年前我在西海岸，跟李顺看日出，看向东方
 未知与希望的方向
 今年我们即将要去
 希望我们顺利
-希望我每次理性脑克制情绪脑，更多地自省与包容
-2025-4-13</div>
+希望我每次理性脑克制情绪脑，更多地自省与包容</p>
+            </div>
         </div>
     </div>
 
@@ -236,7 +290,7 @@
         // 修改全屏查看功能
         const modal = document.getElementById('fullscreenModal');
         const fullscreenImage = document.getElementById('fullscreenImage');
-        const closeBtn = document.querySelector('.close-fullscreen');
+        const closeBtn = document.querySelector('.close-button');
 
         document.querySelectorAll('.floating-photo').forEach(photo => {
             photo.addEventListener('click', function() {

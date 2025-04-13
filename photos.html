@@ -89,11 +89,28 @@
             align-items: center;
         }
 
-        .fullscreen-image {
+        .fullscreen-content {
+            display: flex;
+            gap: 40px;
             max-width: 90%;
+            max-height: 90vh;
+            align-items: center;
+        }
+
+        .fullscreen-image {
+            max-width: 60%;
             max-height: 90vh;
             object-fit: contain;
             border-radius: 10px;
+        }
+
+        .image-description {
+            color: white;
+            max-width: 400px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            white-space: pre-line;
+            display: none;
         }
 
         .close-fullscreen {
@@ -139,6 +156,14 @@
                     <img src="images/2024.png" alt="2024年的照片">
                     <span class="year-label">2024</span>
                 </div>
+                <div class="floating-photo" data-year="2025">
+                    <img src="images/2025.png" alt="2025年的照片">
+                    <span class="year-label">2025</span>
+                </div>
+                <div class="floating-photo" data-year="2025">
+                    <img src="images/2025_1.png" alt="2025年的照片2">
+                    <span class="year-label">2025</span>
+                </div>
             </div>
         </section>
 
@@ -150,7 +175,19 @@
     <!-- 添加全屏查看模态框 -->
     <div class="fullscreen-modal" id="fullscreenModal">
         <span class="close-fullscreen">&times;</span>
-        <img class="fullscreen-image" id="fullscreenImage">
+        <div class="fullscreen-content">
+            <img class="fullscreen-image" id="fullscreenImage">
+            <div class="image-description" id="imageDescription">
+今年是第五年，我们获得了一个新身份
+今年我去了爷爷家，二叔家，姑姑家
+今年唯一的困难与不快，来自我的家人
+两年前我在西海岸，跟李顺看日出，看向东方
+未知与希望的方向
+今年我们即将要去
+希望我们顺利
+希望我每次理性脑克制情绪脑，更多地自省与包容
+2025-4-13</div>
+        </div>
     </div>
 
     <script>
@@ -196,7 +233,7 @@
         window.addEventListener('load', initFloatingPhotos);
         window.addEventListener('resize', initFloatingPhotos);
 
-        // 添加全屏查看功能
+        // 修改全屏查看功能
         const modal = document.getElementById('fullscreenModal');
         const fullscreenImage = document.getElementById('fullscreenImage');
         const closeBtn = document.querySelector('.close-fullscreen');
@@ -206,6 +243,13 @@
                 const img = this.querySelector('img');
                 fullscreenImage.src = img.src;
                 modal.style.display = 'flex';
+                
+                // 检查是否是2025年的特定照片
+                if (img.src.includes('2025.png') && !img.src.includes('2025_1.png')) {
+                    document.getElementById('imageDescription').style.display = 'block';
+                } else {
+                    document.getElementById('imageDescription').style.display = 'none';
+                }
             });
         });
 
